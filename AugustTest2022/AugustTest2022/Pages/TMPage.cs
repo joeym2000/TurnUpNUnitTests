@@ -1,4 +1,5 @@
 ﻿using AugustTest2022.Utilities;
+using AugustTestNunit.Utilities;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AugustTest2022.Pages
 {
-    public class TMPage
+    public class TMPage :CommonDriver
     {
         public void CreateTM(IWebDriver driver)
         {
@@ -60,7 +61,12 @@ namespace AugustTest2022.Pages
             WaitHelpers.WaitToBeClickable(driver, "XPath", "//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[1]", 3);
             IWebElement editButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[1]"));
             editButton.Click();
-
+            IWebElement dropDownButton = driver.FindElement(By.XPath("//*[@id=\'TimeMaterialEditForm\']/div/div[1]/div/span[1]/span/span[2]"));
+            dropDownButton.Click();
+            WaitHelpers.WaitToBeClickable(driver, "XPath", "//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span/span[2]", 3);
+            IWebElement timeText = driver.FindElement(By.XPath("//*[@id=\'TypeCode_listbox\']/li[2]"));
+            timeText.Click();
+            
             // Edit Code
 
             IWebElement editedCode = driver.FindElement(By.Id("Code"));

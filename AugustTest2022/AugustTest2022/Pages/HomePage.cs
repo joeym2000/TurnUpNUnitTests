@@ -21,6 +21,15 @@ namespace AugustTest2022.Pages
             IWebElement timeAndMaterialText = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/ul/li[3]/a"));
             timeAndMaterialText.Click();
         }
+        public void GoToEmlpoyeePage(IWebDriver driver)
+        {
+            // Create New Employee
+            IWebElement administrationButton = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/a"));
+            administrationButton.Click();
 
+            // Click on Employee Text
+            IWebElement employeeText = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/ul/li[2]/a"));
+            employeeText.Click();
+        }
     }
 }

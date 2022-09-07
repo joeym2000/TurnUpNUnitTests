@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 
 namespace AugustTest2022.Pages
 {
@@ -10,9 +11,17 @@ namespace AugustTest2022.Pages
             driver.Navigate().GoToUrl("http://horse.industryconnect.io/Account/Login?ReturnUrl=%2f");
             driver.Manage().Window.Maximize();
 
-            // identify username and enter valid username
-            IWebElement userNameTextBox = driver.FindElement(By.Id("UserName"));
-            userNameTextBox.SendKeys("Hari");
+            try
+            {
+                // identify username and enter valid username
+                IWebElement userNameTextBox = driver.FindElement(By.Id("UserName"));
+                userNameTextBox.SendKeys("Hari");
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("TurnUp page did not launch", ex.Message);
+            }
+            
 
             // identify passsword and enter valid password
             IWebElement passwordTextBox = driver.FindElement(By.Id("Password"));

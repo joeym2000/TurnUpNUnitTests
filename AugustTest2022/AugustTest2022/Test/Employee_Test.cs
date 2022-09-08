@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 namespace AugustTestNunit.Test
 {
     [TestFixture]
+    [Parallelizable]
     public class Employee_Test : CommonDriver
     {
         [SetUp]

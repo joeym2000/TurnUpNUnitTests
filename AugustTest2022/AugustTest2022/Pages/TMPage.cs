@@ -50,6 +50,7 @@ namespace AugustTest2022.Pages
             lastPageButton.Click();
             IWebElement newCodeName = driver.FindElement(By.XPath("//*[@id=\'tmsGrid\']/div[3]/table/tbody/tr[last()]/td[1]")); ;
             Assert.That(newCodeName.Text == "Marcos", "Can't Find Record");
+
         }
 
         public void EditTM(IWebDriver driver)

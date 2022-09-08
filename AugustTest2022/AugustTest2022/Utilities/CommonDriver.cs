@@ -1,6 +1,8 @@
-﻿using AugustTestNunit.Pages;
+﻿using AugustTest2022.Pages;
+using AugustTestNunit.Pages;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +13,17 @@ namespace AugustTestNunit.Utilities
 {
     public class CommonDriver
     {
-        public static IWebDriver driver;
-        public void CreateEmployee()
+        public IWebDriver driver;
+        [SetUp]
+        public void LoginAction()
         {
-            EmployeePage EmployeePageObj = new EmployeePage();
-            EmployeePageObj.CreateEmployee(driver);
+            //Open Chrome Browser
+            driver = new ChromeDriver();
+
+            // Login page object initialization and definition
+            LogInPage LoginPageObj = new LogInPage();
+            LoginPageObj.logInSteps(driver);
+
         }
     }
 }

@@ -5,28 +5,20 @@ using OpenQA.Selenium.Chrome;
 
 namespace AugustTestNunit.Test
 {
+    
     [TestFixture]
+    [Parallelizable]
     public class TM_test : CommonDriver
     {
-        [SetUp]
-        public void LoginAction()
-        {
-            //Open Chrome Browser
-            driver = new ChromeDriver();
-
-            // Login page object initialization and definition
-            LogInPage LoginPageObj = new LogInPage();
-            LoginPageObj.logInSteps(driver);
-
-            //Home page object initialization and definition
-            HomePage HomePageObj = new HomePage();
-            HomePageObj.GoToHomePage(driver);
-
-        }
+        HomePage HomePageObj = new HomePage(); TMPage TMPageObj = new TMPage();
 
         [Test,Order(1)]
         public void CreateTMTest()
         {
+            //Home page object initialization and definition
+          
+            HomePageObj.GoToHomePage(driver);
+            
             //Time And Material 
             TMPage TMPageObj = new TMPage();
             TMPageObj.CreateTM(driver);
@@ -35,16 +27,18 @@ namespace AugustTestNunit.Test
         [Test,Order(2)]
         public void EditTMTest()
         {
+            
+            HomePageObj.GoToHomePage(driver);
             //Edit TM
-            TMPage TMPageObj = new TMPage();
+            
             TMPageObj.EditTM(driver);
 
         }
         [Test,Order(3)]
         public void DeleteTMTest()
         {
+            HomePageObj.GoToHomePage(driver);
             //Delete TM
-            TMPage TMPageObj = new TMPage();
             TMPageObj.DeleteTM(driver);
         }
        

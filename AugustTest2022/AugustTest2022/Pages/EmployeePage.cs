@@ -37,7 +37,7 @@ namespace AugustTestNunit.Pages
             typePassword.SendKeys("CharlieMisocharlie66!");
 
             // Enter save button
-            WaitHelpers.WaitToBeClickable(driver, "XPath", "//*[@id=\"SaveButton\"]", 5);
+            WaitHelpers.WaitToBeClickable(driver, "XPath", "//*[@id=\"SaveButton\"]", 3);
             IWebElement saveButton = driver.FindElement(By.XPath("//*[@id=\"SaveButton\"]"));
             saveButton.Click();
 
@@ -53,6 +53,7 @@ namespace AugustTestNunit.Pages
             //Edit employee
             IWebElement lastPageButton = driver.FindElement(By.XPath("//*[@id=\"usersGrid\"]/div[4]/a[4]/span"));
             lastPageButton.Click();
+            Thread.Sleep(2000);
             IWebElement editButton = driver.FindElement(By.XPath("//*[@id=\'usersGrid\']/div[3]/table/tbody/tr[last()]/td[3]/a[1]"));
             editButton.Click();
             //Input Edited Name
@@ -81,6 +82,8 @@ namespace AugustTestNunit.Pages
         public void Delete(IWebDriver driver)
         {
             //Delete employee file
+            IWebElement deleteFile = driver.FindElement(By.XPath("//*[@id=\"usersGrid\"]/div[3]/table/tbody/tr[last()]/td[3]/a[2]"));
+            deleteFile.Click();
         }
     }
 }

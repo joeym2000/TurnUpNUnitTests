@@ -82,8 +82,10 @@ namespace AugustTestNunit.Pages
         public void Delete(IWebDriver driver)
         {
             //Delete employee file
-            IWebElement deleteFile = driver.FindElement(By.XPath("//*[@id=\"usersGrid\"]/div[3]/table/tbody/tr[last()]/td[3]/a[2]"));
+            Thread.Sleep(2000);
+            IWebElement deleteFile = driver.FindElement(By.XPath("//*[@id=\'usersGrid\']/div[3]/table/tbody/tr[last()]/td[3]/a[2]"));
             deleteFile.Click();
+            driver.SwitchTo().Alert().Accept();
         }
     }
 }

@@ -48,7 +48,7 @@ namespace AugustTest2022.Pages
             IWebElement lastPageButton = driver.FindElement(By.XPath("//*[@id=\'tmsGrid\']/div[4]/a[4]"));
             WaitHelpers.WaitToBeClickable(driver, "XPath", "//*[@id=\'tmsGrid\']/div[4]/a[4]", 3);
             lastPageButton.Click();
-            IWebElement newCodeName = driver.FindElement(By.XPath("//*[@id=\'tmsGrid\']/div[3]/table/tbody/tr[last()]/td[1]")); ;
+            IWebElement newCodeName = driver.FindElement(By.XPath("//*[@id=\'tmsGrid\']/div[3]/table/tbody/tr[last()]/td[1]"));
             Assert.That(newCodeName.Text == "Marcos", "Can't Find Record");
 
         }

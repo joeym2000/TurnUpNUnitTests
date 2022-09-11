@@ -8,6 +8,7 @@ namespace AugustTestNunit.Test
     
     [TestFixture]
     [Parallelizable]
+
     public class TM_test : CommonDriver
     {
         HomePage HomePageObj = new HomePage(); TMPage TMPageObj = new TMPage();

@@ -32,7 +32,7 @@ namespace AugustTestNunit.Test
             HomePageObj.GoToHomePage(driver);
             //Edit TM
             
-            TMPageObj.EditTM(driver);
+            //TMPageObj.EditTM(driver);
 
         }
         [Test,Order(3)]

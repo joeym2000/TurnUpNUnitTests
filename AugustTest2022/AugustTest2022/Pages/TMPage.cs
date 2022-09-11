@@ -48,12 +48,29 @@ namespace AugustTest2022.Pages
             IWebElement lastPageButton = driver.FindElement(By.XPath("//*[@id=\'tmsGrid\']/div[4]/a[4]"));
             WaitHelpers.WaitToBeClickable(driver, "XPath", "//*[@id=\'tmsGrid\']/div[4]/a[4]", 3);
             lastPageButton.Click();
-            IWebElement newCodeName = driver.FindElement(By.XPath("//*[@id=\'tmsGrid\']/div[3]/table/tbody/tr[last()]/td[1]"));
-            Assert.That(newCodeName.Text == "Marcos", "Can't Find Record");
+
 
         }
 
-        public void EditTM(IWebDriver driver)
+        public string GetCode(IWebDriver driver)
+        {
+            IWebElement newCodeName = driver.FindElement(By.XPath("//*[@id=\'tmsGrid\']/div[3]/table/tbody/tr[last()]/td[1]"));
+            return newCodeName.Text;
+        }
+
+        public string GetDescription(IWebDriver driver)
+        {
+            IWebElement newDescriptionName = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[3]"));
+            return newDescriptionName.Text;
+        }
+
+        public string GetPrice(IWebDriver driver)
+        {
+            IWebElement newPriceperunit = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[4]"));
+            return newPriceperunit.Text;
+        }
+
+        public void EditTM(IWebDriver driver, string description)
         {
             WaitHelpers.WaitToBeClickable(driver, "XPath", "//*[@id=\'tmsGrid\']/div[4]/a[4]", 3);
             IWebElement lastPageButton = driver.FindElement(By.XPath("//*[@id=\'tmsGrid\']/div[4]/a[4]"));
@@ -78,7 +95,7 @@ namespace AugustTest2022.Pages
             // Edit Description
             IWebElement editedDescription = driver.FindElement(By.Id("Description"));
             editedDescription.Clear();
-            editedDescription.SendKeys("Charlie");
+            editedDescription.SendKeys(description);
 
             //Edit Price per unit
             IWebElement editedPrice = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[4]/div/span[1]/span/input[1]"));
@@ -95,19 +112,16 @@ namespace AugustTest2022.Pages
             WaitHelpers.WaitToBeClickable(driver, "XPath", "//*[@id=\'tmsGrid\']/div[4]/a[4]", 5);
             IWebElement lastPageButton2 = driver.FindElement(By.XPath("//*[@id=\'tmsGrid\']/div[4]/a[4]"));
             lastPageButton2.Click();
-            IWebElement newEditedCode = driver.FindElement(By.XPath("//*[@id=\'tmsGrid\']/div[3]/table/tbody/tr[last()]/td[1]"));
-            if (newEditedCode.Text == "Miso")
-            {
-                Console.WriteLine("Record Successfully Edited");
-            }
-            else
-            {
 
-            }
-            {
-                Console.WriteLine("Can't Find Record");
-            }
+            //Assert.That(editedDescription.Text == "Updated", "Actual description and expected description do not mtch");
 
+
+        }
+
+        public string GetEditedDescription(IWebDriver driver)
+        {
+            IWebElement editedDescriptions = driver.FindElement(By.XPath("//*[@id='tmsGrid'/div[3]/table/tbody/tr[last()]/td[3]"));
+            return editedDescriptions.Text;
         }
 
         public void DeleteTM(IWebDriver driver)
